@@ -24,6 +24,6 @@ void loop() {
   float tempF = ((tempC * 1.8) + 32);
   // print temperature in F to serial int
   //Serial.println(tempF); //(haha just kidding again)
-  // displays the contents of 
+  // displays the contents of tempF on the 5641AS display
   component.displayNumber(1, tempF);
 }
