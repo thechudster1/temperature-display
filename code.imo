@@ -1,0 +1,29 @@
+// include lib for dht11 temp and relative humidity sensor
+#include <dht.h>
+dht DHT;
+#define dhtInputPin 13
+
+// include lib for 5641AS seven segment display
+#include <Simple5641AS.h>
+// assign pins as follows: a=5, b=6, c=7, d=8, e=9, f=10, g=11, dot=12
+const uint8_t segmentPins[] = {5, 6, 7, 8, 9, 10, 11, 12};
+// assign pins with d1=1, d2=2, etc
+const uint8_t digitSelectionPins[] = {1, 2, 3, 4};
+Simple5641AS component( segmentPins, digitSelectionPins );
+
+void setup() {
+  // start serial int at 9600 baud (this is a LIE if you have the serial int open the display will FREAK OUT and the serial will be unreadable anyway)
+  //Serial.begin(19200);
+}
+
+void loop() {
+  // enter dht input to integer 'chk' (as required by lib i think?)
+  int chk = DHT.read11(dhtInputPin);
+  // enter the temperature in C to a float 'tempC' and convert it to F 
+  float tempC = DHT.temperature;
+  float tempF = ((tempC * 1.8) + 32);
+  // print temperature in F to serial int
+  //Serial.println(tempF); //(haha just kidding again)
+  // displays the contents of 
+  component.displayNumber(1, tempF);
+}
