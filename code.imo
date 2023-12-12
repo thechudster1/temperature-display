@@ -13,7 +13,7 @@ Simple5641AS component( segmentPins, digitSelectionPins );
 
 void setup() {
   // start serial int at 9600 baud (this is a LIE if you have the serial int open the display will FREAK OUT and the serial will be unreadable anyway)
-  //Serial.begin(19200);
+  //Serial.begin(9600);
 }
 
 void loop() {
@@ -23,7 +23,7 @@ void loop() {
   float tempC = DHT.temperature;
   float tempF = ((tempC * 1.8) + 32);
   // print temperature in F to serial int
-  //Serial.println(tempF); //(haha just kidding again)
+  //Serial.println(tempF); //(haha just kidding again :3)
   // displays the contents of tempF on the 5641AS display
   component.displayNumber(1, tempF);
 }
